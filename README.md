@@ -1,12 +1,14 @@
 # self_aligned_reward_learning
 
-This is the implementation for [Learning Reward for Robot Skills Using Large Language Models via Self-Alignment](https://openreview.net/pdf?id=Z19JQ6WFtJ). 
+This is the implementation for [Learning Reward for Robot Skills Using Large Language Models via Self-Alignment](https://arxiv.org/pdf/2405.07162).
 
 
 ## Dependencies
 
 The experiments were conducted on Ubuntu20.04:
 
+* ipdb
+* openai == 1.10.0
 * torch==1.13.1
 * torchvision==0.14.1
 * gymnasium==0.23.1
@@ -39,3 +41,14 @@ Arguments:
 >
 > (5) seeds: List[int].
 
+
+## BibTex
+You can cite this work at 
+```
+@article{zeng2024learning,
+  title={Learning Reward for Robot Skills Using Large Language Models via Self-Alignment},
+  author={Zeng, Yuwei and Mu, Yao and Shao, Lin},
+  journal={arXiv preprint arXiv:2405.07162},
+  year={2024}
+}
+```
