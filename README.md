@@ -15,7 +15,7 @@ Install the Python dependencies.
 
 ```bash
 cd self_aligned_reward_learning
-pip install -r requirements
+pip install -r requirements.txt
 cd ManiSkill2
 pip install .
 cd ../APReL
@@ -52,9 +52,9 @@ Arguments:
 > (5) seeds: List[int].
 
 
-## Replicate Paper Results
+## Reproduce Paper Results
 
-The learnt reward history are saved under `reward_learning/learnt_reward` for the 10 tasks. To train with history, pass corresponding history file according to the name to the argument `--learnt_reward_fn`. 
+The learnt reward history are saved under `reward_learning/learnt_reward` for 10 tasks in figure 5 and 6. To train with history, pass corresponding history file according to the name to the argument `--learnt_reward_fn`. 
 
 For example:
 
@@ -71,5 +71,23 @@ You can cite this work at
   author={Zeng, Yuwei and Mu, Yao and Shao, Lin},
   journal={arXiv preprint arXiv:2405.07162},
   year={2024}
+}
+```
+
+Meanwhile, this repo is built upon APReL and ManiSkill2 with BibTex as follows:
+```
+@inproceedings{biyik2022aprel,
+  title={Aprel: A library for active preference-based reward learning algorithms},
+  author={B{\i}y{\i}k, Erdem and Talati, Aditi and Sadigh, Dorsa},
+  booktitle={2022 17th ACM/IEEE International Conference on Human-Robot Interaction (HRI)},
+  pages={613--617},
+  year={2022},
+  organization={IEEE}
+}
+@article{gu2023maniskill2,
+  title={Maniskill2: A unified benchmark for generalizable manipulation skills},
+  author={Gu, Jiayuan and Xiang, Fanbo and Li, Xuanlin and Ling, Zhan and Liu, Xiqiang and Mu, Tongzhou and Tang, Yihe and Tao, Stone and Wei, Xinyue and Yao, Yunchao and others},
+  journal={arXiv preprint arXiv:2302.04659},
+  year={2023}
 }
 ```
