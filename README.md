@@ -5,25 +5,35 @@ This is the implementation for [Learning Reward for Robot Skills Using Large Lan
 
 ## Dependencies
 
-The experiments were conducted on Ubuntu20.04:
+Install the dependencies for stable_baselines3
 
-* ipdb
-* openai == 1.10.0
-* torch==1.13.1
-* torchvision==0.14.1
-* gymnasium==0.23.1
-* wandb==0.12.21
-* imageio==2.31.1
-* moviepy==1.0.3
-* stable_baselines=2.2.1
-* APReL
-* mani_skill2
-* tulip 
+```bash
+sudo apt-get update && sudo apt-get install cmake libopenmpi-dev python3-dev zlib1g-dev
+```
+
+Install the Python dependencies. 
+
+```bash
+cd self_aligned_reward_learning
+pip install -r requirements
+cd ManiSkill2
+pip install .
+cd ../APReL
+pip install .
+```
 
 
 ## Launch self-aligned reward learning with LLM
 
-Run the following command and input configurable arguments after each request is prompted and available options are listed (if select from a list): 
+1) Download ManiSkill2 asset data from [this link](https://drive.google.com/file/d/1wv_vAwjWlGZ-xaHnZDWAKH9aH2VphtjH/view?usp=sharing) and extract under `reward_learning` folder as `data`.
+
+Alternatively you can download it by running:
+```bash
+python -m mani_skill.utils.download_asset partnet_mobility_cabine
+mv data reward_learning/
+```
+
+2) Run the following command and input configurable arguments after each request is prompted and available options are listed (if select from a list): 
 
 ```bash
 python3 launcher.py
@@ -42,7 +52,18 @@ Arguments:
 > (5) seeds: List[int].
 
 
+## Replicate Paper Results
+
+The learnt reward history are saved under `reward_learning/learnt_reward` for the 10 tasks. To train with history, pass corresponding history file according to the name to the argument `--learnt_reward_fn`. 
+
+For example:
+
+```bash
+python3 main.py --skill 'push a swivel chair to a target 2D location on the ground' --seed 385 --reward_option llm_updated --iter_steps 100000 --total_steps 8000000  --learnt_reward_fn learnt_rewards/push_chair.pkl
+```
+
 ## BibTex
+
 You can cite this work at 
 ```
 @article{zeng2024learning,
