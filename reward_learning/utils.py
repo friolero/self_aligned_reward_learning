@@ -14,12 +14,12 @@ import cv2
 import gym
 import openai
 import torch
+from logger import Logger
 from mani_skill2_wrapper import (
     ManiSkill2DualArmMobileBaseTaskWrapper,
     ManiSkill2FixedBaseTaskWrapper,
     ManiSkill2MobileBaseTaskWrapper,
 )
-from logger import Logger
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
@@ -242,6 +242,7 @@ def init_logger(cfg, run_id=None):
 def create_relabel_reward_func(
     llm_reward_func, tmp_reward_func_fn="tmp_llm_reward_func.py"
 ):
+    lines = [l for l in llm_reward_func.strip().split("\n") if len(l) > 0]
     assert lines[0].startswith("def "), "Expecting a function definition"
     new_func_lines = [lines[0].replace("obs,", "obs, reward_vars,")]
     for line in lines[1:]:
